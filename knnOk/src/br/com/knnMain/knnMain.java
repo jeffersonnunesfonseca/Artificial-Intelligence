@@ -185,7 +185,7 @@ public class knnMain {
 	    Arrays.sort(matriz2, arrayComparator);
 	   int count =0;
 	    int ClassUm = 0,ClassDois = 0,ClassTres = 0;
-
+/*teste*/
 	    
 		 int k;
 		 String array[] = new String[2];
