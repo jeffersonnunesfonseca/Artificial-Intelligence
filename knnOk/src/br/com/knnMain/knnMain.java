@@ -131,7 +131,6 @@ public class knnMain {
 
 			matriz[cont][0] = trainingName.get(cont);
 			
-
 			/*
 			 * FAZENDO OS CALCULOS DAS DIST‚NCIAS E PREENCGENCO A COLUNA EM QUE
 			 * IR√O SER ARMAZENADAS
