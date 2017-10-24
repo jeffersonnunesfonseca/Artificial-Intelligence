@@ -152,9 +152,7 @@ public class knnMain {
 				resTrainingName.add(matriz[cont][0]);
 				resTrainingRes.add(matriz[cont][1]);
 				for (int coluna = 0; coluna < 2; coluna++) {
-					/*
-					 * TESTE.add(matriz[cont][coluna]); Collections.sort(TESTE);
-					 */
+		
 					System.out.println(matriz[cont][coluna]);
 
 				}
@@ -164,9 +162,9 @@ public class knnMain {
 		}
 
 
-		// FECHA O ARQUIVO RESULTADO
 
-		
+
+	/*MATRIZ QUE IRÁ ARMAZENAR OS RESULTADOS*/
 	  final String[][] matriz2 = new String[1269][2];
 	
 		for (cont = 0; cont < 1269; cont++) {
@@ -179,7 +177,7 @@ public class knnMain {
 
 		}
 		
-
+		/*MÉTODO UTILIZADO PARA ORDENAR A MATRIZ*/
 	    final Comparator<String[]> arrayComparator = new Comparator<String[]>() {
 	        public int compare(String[] o1, String[] o2) {
 	            return o1[1].compareTo(o2[1]);
@@ -195,14 +193,15 @@ public class knnMain {
 		 Scanner valorK = new Scanner(System.in);
 		 System.out.println("Entre com o Valor de K"); k = valorK.nextInt();
 	
+		 
+		/* COMPARAÇÃO DE QUAL É O MENOR K, E IMPRIME O RESULTADO*/
 	    for (final String[] arr : matriz2) {
 	    	String[] testDois = Arrays.toString(arr).split(",");
-/*	    	System.out.println(count+"-->"+Arrays.toString(arr));*/
-	if(count<k){
 
-	    	/*System.out.println(count+"-->"+Arrays.toString(arr));*/
+	if(count<k){
 	    	
 	    	System.out.println(count+"-||->"+testDois[0]);
+	    	
 	    	  	if(testDois[0].equals("[Iris-setosa")){
 	    		ClassUm++;
 	    		System.out.println("soma1");
