@@ -42,6 +42,8 @@ public class knnMain {
 		ArrayList<Double> sepalWidht_Test = new ArrayList<Double>();
 		ArrayList<Double> petalLength_Test = new ArrayList<Double>();
 		ArrayList<Double> petalWidht_Test = new ArrayList<Double>();
+		ArrayList<String> gab = new ArrayList<String>();
+		ArrayList<String> gabDois = new ArrayList<String>();
 
 		// ABRINDO ARQUIVO DE TREINAMENTO
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
@@ -108,6 +110,7 @@ public class knnMain {
 		int cont2;
 		final String matriz[][] = new String[n][2];
 
+
 		/* CRIANDO ARQUIVO QUE IR¡ ARMAZENAR OS RESULTADOS */
 
 
@@ -131,6 +134,7 @@ public class knnMain {
 
 			matriz[cont][0] = trainingName.get(cont);
 			
+
 			/*
 			 * FAZENDO OS CALCULOS DAS DIST‚NCIAS E PREENCGENCO A COLUNA EM QUE
 			 * IR√O SER ARMAZENADAS
@@ -150,23 +154,18 @@ public class knnMain {
 				));
 				resTrainingName.add(matriz[cont][0]);
 				resTrainingRes.add(matriz[cont][1]);
-				for (int coluna = 0; coluna < 2; coluna++) {
-		
-					System.out.println(matriz[cont][coluna]);
 
-				}
-
-			System.out.println("----\n");
+	
 			}
 		}
-
-
-
-
-	/*MATRIZ QUE IR¡ ARMAZENAR OS RESULTADOS*/
-	  final String[][] matriz2 = new String[1269][2];
 	
-		for (cont = 0; cont < 1269; cont++) {
+
+		// FECHA O ARQUIVO RESULTADO
+
+		
+	  final String[][] matriz2 = new String[2376][2];
+	
+		for (cont = 0; cont < 2376; cont++) {
 
 			
 			matriz2[cont][0] = resTrainingName.get(cont);
@@ -176,53 +175,55 @@ public class knnMain {
 
 		}
 		
-		/*M…TODO UTILIZADO PARA ORDENAR A MATRIZ*/
+
 	    final Comparator<String[]> arrayComparator = new Comparator<String[]>() {
 	        public int compare(String[] o1, String[] o2) {
 	            return o1[1].compareTo(o2[1]);
 	        }
 	    };
 	    Arrays.sort(matriz2, arrayComparator);
+	    
+for (cont = 0; cont < 2376; cont++) {
+		gab.add("["+matriz2[cont][0]);
+				}
 	   int count =0;
 	    int ClassUm = 0,ClassDois = 0,ClassTres = 0;
-/*teste*/
+	    
 	    
 		 int k;
 		 String array[] = new String[2];
 		 Scanner valorK = new Scanner(System.in);
 		 System.out.println("Entre com o Valor de K"); k = valorK.nextInt();
-	
 		 
-		/* COMPARA«√O DE QUAL … O MENOR K, E IMPRIME O RESULTADO*/
+		 
+		 
 	    for (final String[] arr : matriz2) {
 	    	String[] testDois = Arrays.toString(arr).split(",");
 
 	if(count<k){
+
+	   
 	    	
 	    	System.out.println(count+"-||->"+testDois[0]);
-	    	
 	    	  	if(testDois[0].equals("[Iris-setosa")){
 	    		ClassUm++;
-	    		System.out.println("soma1");
-	    		
+
 	    	}
 
 	    	else if(testDois[0].equals("[Iris-versicolor")){
 	    		ClassDois++;
-	    		System.out.println("dois");
+
 	    	}
 	    	else if(testDois[0].equals("[Iris-virginica")){
 	    		ClassTres++;
-	    		System.out.println("tres");
-	    		
+
 	    	
 	    	}
 	    	
 	    	    	    	
 	       }	           
-    
+    gabDois.add(testDois[0]);
 	count++;
-	        
 	        
 	    }	
 	    if(ClassUm > ClassDois && ClassUm > ClassTres){
@@ -238,8 +239,17 @@ public class knnMain {
         	
         	System.out.println("RESULTADO = Iris-virginica");
         }
-
+	    int igualdade=0;
+	    for(int cont5 =0;cont5<2376;cont5++){
+	    	if(gab.get(cont5).equals(gabDois.get(cont5))){
+	    	
+	    	igualdade ++;
+	    	}
+	    	}
+	    System.out.println("TAXA DE ACERTO …: "+(igualdade/2376)*100+"%");
+	    	
+	    }
+	  
 
 	}
 
-}
